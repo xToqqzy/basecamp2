@@ -13,7 +13,7 @@ def job_offer_template():
         return
 
     job_title = input("Job title:")
-    if not (len(job_title) >= 10 and job_title.isalpha()):
+    if not (len(job_title) >= 10):
         print("Input error")
         return
 
