@@ -25,14 +25,21 @@ temperatures = {
 temperatures_counts1 = 0
 temperatures_counts2 = 0
 
-for item in temperatures['1995']['3']:
+temperatures_1995 = temperatures['1995']['3']
+temperatures_2010 = temperatures['2010']['3']
+temperatures_2020 = temperatures['2020']['3']
 
-    if item in temperatures['2010']['3']:
-        temperatures_counts1 += 1
+set_1995 = set(temperatures_1995)
+set_2010 = set(temperatures_2010)
+set_2020 = set(temperatures_2020)
 
-for item in temperatures['1995']['3']:
-    if item in temperatures['2020']['3']:
-        temperatures_counts2 += 1
+
+temp_1995_2010 = set_1995.intersection(set_2010)
+aantal = len(temp_1995_2010)
+print(aantal)
+temp_1995_2010 = set_1995.intersection(set_2020)
+aantal = len(temp_1995_2010)
+print(aantal)
 
 
 temp_1995 = temperatures['1995']["3"]
@@ -46,8 +53,6 @@ hottest_day2020 = max(temp_2020)
 hottest_day_list = max(hottest_day2010, hottest_day1995, hottest_day2020)
 
 
-print(temperatures_counts1)
-print(temperatures_counts2)
 if hottest_day_list == hottest_day1995:
     print("1995")
 elif hottest_day_list == hottest_day2020:
