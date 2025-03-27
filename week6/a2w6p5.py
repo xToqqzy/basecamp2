@@ -1,7 +1,3 @@
-def translate_text():
-    pass
-
-
 def message_to_morse(message: str) -> str:
     morse_code = {
         'A': '.-',    'B': '-...',   'C': '-.-.',  'D': '-..',   'E': '.',
@@ -12,7 +8,7 @@ def message_to_morse(message: str) -> str:
         'Z': '--..',  '1': '.----',  '2': '..---', '3': '...--',
         '4': '....-', '5': '.....',  '6': '-....', '7': '--...',
         '8': '---..', '9': '----.',  '0': '-----', ',': '--..--',
-        '.': '.-.-.-', '?': '..--..'
+        '.': '.-.-.-', '?': '..--..', ' ': '/'
     }
 
     words = message.upper().split(" ")
@@ -26,10 +22,7 @@ def message_to_morse(message: str) -> str:
     return "    ".join(morse_words)
 
 
-def morse_to_message():
-    user_input = input("Translate to Message: ").strip()
-    morse_words = user_input.split("   ")
-
+def morse_to_message(morse_input: str) -> str:
     morse_code_reversed = {
         '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E',
         '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J',
@@ -39,23 +32,31 @@ def morse_to_message():
         '--..': 'Z', '.----': '1', '..---': '2', '...--': '3', '....-': '4',
         '.....': '5', '-....': '6', '--...': '7', '---..': '8',
         '----.': '9', '-----': '0', '--..--': ',', '.-.-.-': '.',
-        '..--..': '?'
+        '..--..': '?', '/': ' '
     }
 
+    morse_words = morse_input.split("   ")
     decoded_words = []
 
     for word in morse_words:
         chars = word.split(" ")
         decoded_chars = [morse_code_reversed.get(
-            char, f"[{char}]") for char in chars]
+            char, f"{char}") for char in chars]
         decoded_words.append("".join(decoded_chars))
 
-    print(" ".join(decoded_words))
+    return " ".join(decoded_words)
+
+
+def translate_text():
+    user_input = input("Enter text (either Morse code or message): ").strip()
+
+    if all(char in "-. /" for char in user_input):
+        result = morse_to_message(user_input)
+    else:
+        result = message_to_morse(user_input)
+
+    print(result)
 
 
 if __name__ == "__main__":
-    user_input = input("Translate to Morse: ").strip()
-    morse = message_to_morse(user_input)
-    print(morse)
-
-    # morse_to_message()
+    translate_text()
