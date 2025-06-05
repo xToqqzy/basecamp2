@@ -4,24 +4,24 @@ import sys
 def job_offer_template():
     name = input("First name:")
     if not (name.istitle() and name.isalpha() and 2 <= len(name) <= 10):
-        print("Input error")
+        print("The name should start with a capital")
         return
 
     last_name = input("Last Name:")
     if not (last_name.istitle() and last_name.isalpha() and 2 <= len(last_name) <= 10):
-        print("Input error")
+        print("Last name should start with a capital")
         return
 
     job_title = input("Job title:")
     if not (len(job_title) >= 10):
-        print("Input error")
+        print("enter Full job titel")
         return
 
     annual_salary = input("Annual salary:")
     try:
         salary = float(annual_salary.replace(",", ""))
         if not (20000.00 <= salary <= 80000.00):
-            print("Input error")
+            print("Should be between 20k and 80k")
             return
     except ValueError:
         print("Input error")
@@ -30,13 +30,13 @@ def job_offer_template():
     starting_date = input("Starting date (YYYY-MM-DD):")
     parts = starting_date.split("-")
     if len(parts) != 3 or parts[0] not in ["2021", "2022"] or not parts[1].isdigit() or not parts[2].isdigit():
-        print("Input error")
+        print("Only between 2021 and 2022")
         return
     if not (1 <= int(parts[1]) <= 12 and 1 <= int(parts[2]) <= 31):
-        print("Input error")
+        print("Not a real month or day")
         return
 
-    print(f"Dear {name} {last_name}, After careful evaluation of your application for the position of {job_title}, we are glad to offer you the job. Your salary will be {annual_salary} euro annually. Your start date will be on {starting_date}. Please do not hesitate to contact us with any questions. Sincerely, HR department of XYZ")
+    print(f"Here is the final letter to send:\nDear {name} {last_name}, After careful evaluation of your application for the position of {job_title}, we are glad to offer you the job. Your salary will be {annual_salary} euro annually. Your start date will be on {starting_date}. Please do not hesitate to contact us with any questions. Sincerely, HR department of XYZ")
 
 
 def rejection_template():
@@ -67,12 +67,15 @@ def rejection_template():
         print(f"Dear {name2} {last_name2}, after careful evaluation of your application for the position of {job_title2}, at this moment we have decided to proceed with another candidate. We wish you the best in finding your future desired career. Please do not hesitate to contact us with any questions. Sincerely, HR department of XYZ")
 
 
-response = input("More letters? 'Yes' or 'No':")
-if response == "No":
-    sys.exit()
+while True:
+    which = input("Job offer or Rejection: ")
+    if which == "Job offer":
+        job_offer_template()
+    elif which == "Rejection":
+        rejection_template()
+    else:
+        print("Invalid choice. Please enter 'Job offer' or 'Rejection'.")
 
-which = input("Job offer or Rejection: ")
-if which == "Job offer":
-    job_offer_template()
-elif which == "Rejection":
-    rejection_template()
+    response = input("More letters? 'Yes' or 'No': ")
+    if response == "No" or response == 'no':
+        sys.exit()

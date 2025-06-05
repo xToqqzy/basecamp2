@@ -1,0 +1,9 @@
+19-05-2025 13:25:07;cpm_name=North;license_plate=123-123-123;action=check-in
+19-05-2025 13:25:23;cpm_name=North;license_plate=123-123-123;action=check-out;parking_fee=2
+19-05-2025 13:27:05;cpm_name=North;license_plate=123-123-123;action=check-in
+19-05-2025 13:35:23;cpm_name=North;license_plate=o;action=check-in
+19-05-2025 13:57:57;cpm_name=North;license_plate=123-123-123;action=check-out;parking_fee=2
+19-05-2025 13:58:55;cpm_name=North;license_plate=123-123-321;action=check-in
+19-05-2025 13:59:01;cpm_name=North;license_plate=123-123-321;action=check-out;parking_fee=2
+19-05-2025 14:46:16;cpm_name=North;license_plate=abs-123-123;action=check-in
+19-05-2025 14:46:22;cpm_name=North;license_plate=abs-123-123;action=check-out;parking_fee=2
